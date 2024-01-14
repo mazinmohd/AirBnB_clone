@@ -13,7 +13,7 @@ import models
 import unittest
 from datetime import datetime
 from time import sleep
-from AirBnB_clone.models.amenity import Amenity
+from models.amenity import Amenity
 
 
 class TestAmenity_instantiation(unittest.TestCase):

@@ -1,16 +1,21 @@
 #!/usr/bin/python3
-"""Base class"""
+"""This is the base class for all models."""
+
+
 import uuid
 from datetime import datetime
 from models import storage
 
 
 class BaseModel:
-    """_summary_
-    """
+    """This is the base class for all models."""
 
     def __init__(self, *args, **kwargs):
-        """_summary_
+        """Initialize a new instance of the BaseModel class.
+
+        Args:
+            *args: Variable length argument list.
+            **kwargs: Arbitrary keyword arguments.
         """
         if kwargs:
             for key, value in kwargs.items():
@@ -27,24 +32,25 @@ class BaseModel:
             storage.new(self)
 
     def __str__(self) -> str:
-        """_summary_
+        """Return a string representation of the BaseModel instance.
 
         Returns:
-            str: _description_
+            str: A string representation of the BaseModel instance.
         """
         return f"[{self.__class__.__name__}] ({self.id}) <{self.__dict__}>"
 
     def save(self):
-        """save"""
+        """Save the BaseModel instance.
+        mare talk talk
+        """
         self.updated_at = datetime.now()
         storage.save()
 
     def to_dict(self):
-        """_summary_
-        to dict
+        """Convert the BaseModel instance to a dictionary.
 
         Returns:
-            _type_: _description_
+            dict: A dictionary representation of the BaseModel instance.
         """
         obj_dict = self.__dict__.copy()
         obj_dict['__class__'] = self.__class__.__name__

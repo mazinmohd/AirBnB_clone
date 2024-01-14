@@ -1,5 +1,4 @@
-#!/usr/bin/python3
-"""_summary_"""
+"""This is an init py documentation !!!"""
 from models.engine.file_storage import FileStorage
 
 

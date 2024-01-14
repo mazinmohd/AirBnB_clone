@@ -6,6 +6,8 @@ Unittest classes:
     TestCity_save
     TestCity_to_dict
 """
+
+
 import os
 import models
 import unittest

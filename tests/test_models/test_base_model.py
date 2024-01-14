@@ -6,6 +6,8 @@ Unittest classes:
     TestBaseModel_save
     TestBaseModel_to_dict
 """
+
+
 import os
 import models
 import unittest
@@ -226,6 +228,7 @@ class TestBaseModel_to_dict(unittest.TestCase):
         bm = BaseModel()
         with self.assertRaises(TypeError):
             bm.to_dict(None)
+        my_model = BaseModel()
 
 
 if __name__ == "__main__":

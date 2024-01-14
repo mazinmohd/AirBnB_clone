@@ -1,26 +1,51 @@
 #!/usr/bin/python3
-"""Base class"""
+"""
+FileStorage - Serialization and Deserialization of Objects
+"""
+
+
 import json
 import os.path
 
 
 class FileStorage:
-    """serializes instances to a JSON file
-      and deserializes JSON file to instances"""
+    """
+    FileStorage Class
+
+    This class serializes instances to a JSON file
+      and deserializes JSON files to instances.
+
+    Attributes:
+        __file_path (str): The path to the JSON file.
+        __objects (dict): A dictionary that stores serialized objects.
+    """
+
     __file_path = "file.json"
     __objects = {}
 
     def all(self):
-        """returns the dictionary"""
+        """
+        Returns:
+            dict: A dictionary containing all serialized objects.
+        """
         return FileStorage.__objects
 
     def new(self, obj):
-        """sets in __objects the obj with key <obj class name>.id"""
+        """
+        Adds a new serialized object to the dictionary.
+
+        Args:
+            obj (BaseModel): The object to be serialized.
+        """
         key = f"{obj.__class__.__name__}.{obj.id}"
         FileStorage.__objects[key] = obj
 
     def save(self):
-        """serializes __objects to the JSON file (path: __file_path)"""
+        """
+        Serializes the objects to the JSON file.
+        sda asd
+        ds sadssaf
+        """
         obj_dict = {}
         for key, value in FileStorage.__objects.items():
             obj_dict[key] = value.to_dict()
@@ -28,7 +53,10 @@ class FileStorage:
             json.dump(obj_dict, file)
 
     def reload(self):
-        """deserializes the JSON file to __objects"""
+        """
+        Deserializes the JSON file to objects.
+        more talk ksadnj kjsa
+        """
         from models.base_model import BaseModel
         from models.user import User
         from models.place import Place
@@ -37,10 +65,17 @@ class FileStorage:
         from models.state import State
         from models.review import Review
 
-        Models = {'BaseModel': BaseModel, 'User': User, 'Amenity': Amenity,
-                  'Place': Place,
-                  'City': City, 'State': State, 'Review': Review}
-        if os.path.exists(FileStorage.__file_path) is True:
+        Models = {
+            'BaseModel': BaseModel,
+            'User': User,
+            'Amenity': Amenity,
+            'Place': Place,
+            'City': City,
+            'State': State,
+            'Review': Review
+        }
+
+        if os.path.exists(FileStorage.__file_path):
             with open(FileStorage.__file_path, 'r') as file:
                 data = json.load(file)
                 for value in data.values():

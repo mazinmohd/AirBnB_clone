@@ -6,12 +6,14 @@ Unittest classes:
     TestAmenity_save
     TestAmenity_to_dict
 """
+
+
 import os
 import models
 import unittest
 from datetime import datetime
 from time import sleep
-from models.amenity import Amenity
+from AirBnB_clone.models.amenity import Amenity
 
 
 class TestAmenity_instantiation(unittest.TestCase):

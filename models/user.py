@@ -1,10 +1,11 @@
 #!/usr/bin/python3
-"""user"""
+""" User model """
 from models.base_model import BaseModel
 
 
-class User (BaseModel):
-    """wow"""
+class User(BaseModel):
+    """  users class """
+
     email = ""
     password = ""
     first_name = ""

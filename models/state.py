@@ -1,8 +1,9 @@
 #!/usr/bin/python3
-"""user"""
+""" State Model """
 from models.base_model import BaseModel
 
 
-class State (BaseModel):
-    """wow"""
+class State(BaseModel):
+    """ state class  """
+
     name = ""

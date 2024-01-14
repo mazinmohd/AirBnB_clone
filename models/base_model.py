@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 """This is the base class for all models."""
-
-
 import uuid
 from datetime import datetime
 from models import storage

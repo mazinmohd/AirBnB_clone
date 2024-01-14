@@ -7,8 +7,6 @@ Unittest classes:
     TestReview_save
     TestReview_to_dict
 """
-
-
 import os
 import models
 import unittest
@@ -72,7 +70,8 @@ class TestReview_instantiation(unittest.TestCase):
         self.assertNotIn("text", rv.__dict__)
 
     def test_two_reviews_unique_ids(self):
-        """Test that two instances of Review have unique ids."""
+        """Test that two instan
+        ces of Review have unique ids."""
         rv1 = Review()
         rv2 = Review()
         self.assertNotEqual(rv1.id, rv2.id)
@@ -107,12 +106,14 @@ class TestReview_instantiation(unittest.TestCase):
         self.assertIn("'updated_at': " + dt_repr, rvstr)
 
     def test_args_unused(self):
-        """Test that Review can be instantiated with unused arguments."""
+        """Test that Review can be instanti
+        ated with unused arguments."""
         rv = Review(None)
         self.assertNotIn(None, rv.__dict__.values())
 
     def test_instantiation_with_kwargs(self):
-        """Test that Review can be instantiated with keyword arguments."""
+        """Test that Review can be instantiated wi
+        th keyword arguments."""
         dt = datetime.today()
         dt_iso = dt.isoformat()
         rv = Review(id="345", created_at=dt_iso, updated_at=dt_iso)
@@ -129,12 +130,14 @@ class TestReview_instantiation(unittest.TestCase):
 
 class TestReview_save(unittest.TestCase):
     """
-    Unittests for testing the save method of the Review class.
+    Unittests for testing the save meth
+    od of the Review class.
     """
 
     @classmethod
     def setUp(self):
-        """Set up the test by renaming the file.json to tmp."""
+        """Set up the test by renaming the file.js
+        on to tmp."""
         try:
             os.rename("file.json", "tmp")
         except IOError:
@@ -193,11 +196,13 @@ class TestReview_save(unittest.TestCase):
 
 class TestReview_to_dict(unittest.TestCase):
     """
-    Unittests for testing the to_dict method of the Review class.
+    Unittests for testing the to_dict metho
+    d of the Review class.
     """
 
     def test_to_dict_type(self):
-        """Test that the to_dict method returns a dictionary."""
+        """Test that the to_dict method retu
+        rns a dictionary."""
         self.assertTrue(dict, type(Review().to_dict()))
 
     def test_to_dict_contains_correct_keys(self):

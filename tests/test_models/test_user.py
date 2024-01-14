@@ -6,8 +6,6 @@ Unittest classes:
     TestUser_save
     TestUser_to_dict
 """
-
-
 import os
 import models
 import unittest
@@ -17,7 +15,8 @@ from models.user import User
 
 
 class TestUser_instantiation(unittest.TestCase):
-    """Unittests for testing instantiation of the User class."""
+    """Unittests for testing insta
+    ntiation of the User class."""
 
     def test_no_args_instantiates(self):
         """Test that User class can be
@@ -102,7 +101,8 @@ class TestUser_instantiation(unittest.TestCase):
         self.assertIn("'updated_at': " + dt_repr, usstr)
 
     def test_args_unused(self):
-        """Test that User instance ignores unused arguments."""
+        """Test that User instance ign
+        ores unused arguments."""
         us = User(None)
         self.assertNotIn(None, us.__dict__.values())
 
@@ -187,7 +187,8 @@ class TestUser_save(unittest.TestCase):
 
 
 class TestUser_to_dict(unittest.TestCase):
-    """Unittests for testing to_dict method of the User class."""
+    """Unittests for testing to_dict met
+    hod of the User class."""
 
     def test_to_dict_type(self):
         """Test that the to_dict method

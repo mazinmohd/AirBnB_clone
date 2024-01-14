@@ -6,8 +6,6 @@ Unittest classes:
     TestAmenity_save
     TestAmenity_to_dict
 """
-
-
 import os
 import models
 import unittest
@@ -17,10 +15,11 @@ from models.amenity import Amenity
 
 
 class TestAmenity_instantiation(unittest.TestCase):
-    """Unittests for testing instantiation of the Amenity class."""
+    """Unittests of the Amenity class."""
 
     def test_no_args_instantiates(self):
-        """Test that Amenity can be instantiated with no arguments."""
+        """Test that Amenity can be
+          instantiated with no arguments."""
         self.assertEqual(Amenity, type(Amenity()))
 
     def test_new_instance_stored_in_objects(self):
@@ -29,11 +28,13 @@ class TestAmenity_instantiation(unittest.TestCase):
         self.assertIn(Amenity(), models.storage.all().values())
 
     def test_created_at_is_public_datetime(self):
-        """Test that created_at attribute is a public datetime object."""
+        """Test that created_at attribut
+        e is a public datetime object."""
         self.assertEqual(datetime, type(Amenity().created_at))
 
     def test_updated_at_is_public_datetime(self):
-        """Test that updated_at attribute is a public datetime object."""
+        """Test that updated_at
+        attribute is a public datetime object."""
         self.assertEqual(datetime, type(Amenity().updated_at))
 
     def test_name_is_public_class_attribute(self):
@@ -44,7 +45,8 @@ class TestAmenity_instantiation(unittest.TestCase):
         self.assertNotIn("name", am.__dict__)
 
     def test_two_amenities_unique_ids(self):
-        """Test that two instances of Amenity have different ids."""
+        """Test that two instances of
+          Amenity have different ids."""
         am1 = Amenity()
         am2 = Amenity()
         self.assertNotEqual(am1.id, am2.id)
@@ -79,7 +81,8 @@ class TestAmenity_instantiation(unittest.TestCase):
         self.assertIn("'updated_at': " + dt_repr, amstr)
 
     def test_args_unused(self):
-        """Test that passing None as an argument to Amenity is ignored."""
+        """Test that passing None as an
+          argument to Amenity is ignored."""
         am = Amenity(None)
         self.assertNotIn(None, am.__dict__.values())
 
@@ -93,22 +96,26 @@ class TestAmenity_instantiation(unittest.TestCase):
         self.assertEqual(am.updated_at, dt)
 
     def test_instantiation_with_None_kwargs(self):
-        """Test that passing None as a kwarg to Amenity raises a TypeError."""
+        """Test that passing None as a kwarg
+        to Amenity raises a TypeError."""
         with self.assertRaises(TypeError):
             Amenity(id=None, created_at=None, updated_at=None)
 
 
 class TestAmenity_save(unittest.TestCase):
-    """Unittests for testing save method of the Amenity class."""
+    """Unittests for testing save method
+      of the Amenity class."""
 
     @classmethod
     def setUp(self):
+        """ this is class set up"""
         try:
             os.rename("file.json", "tmp")
         except IOError:
             pass
 
     def tearDown(self):
+        """this is class rear down """
         try:
             os.remove("file.json")
         except IOError:
@@ -119,7 +126,8 @@ class TestAmenity_save(unittest.TestCase):
             pass
 
     def test_one_save(self):
-        """Test that the save method updates the updated_at attribute."""
+        """Test that the save method updates
+          the updated_at attribute."""
         am = Amenity()
         sleep(0.05)
         first_updated_at = am.updated_at
@@ -127,7 +135,8 @@ class TestAmenity_save(unittest.TestCase):
         self.assertLess(first_updated_at, am.updated_at)
 
     def test_two_saves(self):
-        """Test that multiple saves update the updated_at attribute."""
+        """Test that multiple saves update
+          the updated_at attribute."""
         am = Amenity()
         sleep(0.05)
         first_updated_at = am.updated_at
@@ -156,14 +165,16 @@ class TestAmenity_save(unittest.TestCase):
 
 
 class TestAmenity_to_dict(unittest.TestCase):
-    """Unittests for testing to_dict method of the Amenity class."""
+    """Unittests for testing to_dict
+      method of the Amenity class."""
 
     def test_to_dict_type(self):
         """Test that the to_dict method returns a dictionary."""
         self.assertTrue(dict, type(Amenity().to_dict()))
 
     def test_to_dict_contains_correct_keys(self):
-        """Test that the to_dict method contains the correct keys."""
+        """Test that the to_dict
+          method contains the correct keys."""
         am = Amenity()
         self.assertIn("id", am.to_dict())
         self.assertIn("created_at", am.to_dict())

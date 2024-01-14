@@ -7,8 +7,6 @@ Unittest classes:
     TestPlace_save
     TestPlace_to_dict
 """
-
-
 import os
 import models
 import unittest
@@ -30,7 +28,8 @@ class TestPlace_instantiation(unittest.TestCase):
 
     def test_new_instance_stored_in_objects(self):
         """
-        Test that a newly created instance is stored in the objects dictionary.
+        Test that a newly created instance
+        is stored in the objects dictionary.
         """
         self.assertIn(Place(), models.storage.all().values())
 
@@ -99,7 +98,8 @@ class TestPlace_instantiation(unittest.TestCase):
 
     def test_number_bathrooms_is_public_class_attribute(self):
         """
-        Test that number_bathrooms is a public class attribute.
+        Test that number_bathrooms is a
+        public class attribute.
         """
         pl = Place()
         self.assertEqual(int, type(Place.number_bathrooms))
@@ -195,7 +195,8 @@ class TestPlace_instantiation(unittest.TestCase):
 
     def test_instantiation_with_kwargs(self):
         """
-        Test instantiation of a Place object with keyword arguments.
+        Test instantiation of a Place ob
+        ject with keyword arguments.
         """
         dt = datetime.today()
         dt_iso = dt.isoformat()
@@ -214,11 +215,13 @@ class TestPlace_instantiation(unittest.TestCase):
 
 
 class TestPlace_save(unittest.TestCase):
-    """Unittests for testing the save method of the Place class."""
+    """Unittests for testing the save metho
+    d of the Place class."""
 
     @classmethod
     def setUpClass(cls):
-        """Set up the test class by renaming the file.json to tmp."""
+        """Set up the test class by renami
+        ng the file.json to tmp."""
         try:
             os.rename("file.json", "tmp")
         except IOError:
@@ -237,7 +240,8 @@ class TestPlace_save(unittest.TestCase):
             pass
 
     def test_one_save(self):
-        """Test that the save method updates the updated_at attribute."""
+        """Test that the save method updates
+          the updated_at attribute."""
         pl = Place()
         sleep(0.05)
         first_updated_at = pl.updated_at
@@ -276,14 +280,16 @@ class TestPlace_save(unittest.TestCase):
 
 
 class TestPlace_to_dict(unittest.TestCase):
-    """Unittests for testing the to_dict method of the Place class."""
+    """Unittests for testing the to_dict
+      method of the Place class."""
 
     def test_to_dict_type(self):
         """Test that the to_dict method returns a dictionary."""
         self.assertTrue(dict, type(Place().to_dict()))
 
     def test_to_dict_contains_correct_keys(self):
-        """Test that the to_dict method includes the correct keys."""
+        """Test that the to_dict method
+          includes the correct keys."""
         pl = Place()
         self.assertIn("id", pl.to_dict())
         self.assertIn("created_at", pl.to_dict())

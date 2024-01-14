@@ -7,8 +7,6 @@ Unittest classes:
     TestSta
     te_to_dict
 """
-
-
 import os
 import models
 import unittest
@@ -115,7 +113,8 @@ class TestState_instantiation(unittest.TestCase):
 
 
 class TestState_save(unittest.TestCase):
-    """Unittests for testing save method of the State class."""
+    """Unittests for testing save met
+    hod of the State class."""
 
     @classmethod
     def setUp(self):
@@ -179,7 +178,8 @@ class TestState_save(unittest.TestCase):
 
 
 class TestState_to_dict(unittest.TestCase):
-    """Unittests for testing to_dict method of the State class."""
+    """Unittests for testing to_dict met
+    hod of the State class."""
 
     def test_to_dict_type(self):
         """Test that the return value of
@@ -238,7 +238,8 @@ class TestState_to_dict(unittest.TestCase):
 
     def test_to_dict_with_arg(self):
         """Test that calling to_dict
-          method with an argument raises a TypeError."""
+          method with an argument r
+          aises a TypeError."""
         st = State()
         with self.assertRaises(TypeError):
             st.to_dict(None)

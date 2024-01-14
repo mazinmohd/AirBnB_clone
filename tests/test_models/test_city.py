@@ -6,8 +6,6 @@ Unittest classes:
     TestCity_save
     TestCity_to_dict
 """
-
-
 import os
 import models
 import unittest
@@ -17,10 +15,12 @@ from models.city import City
 
 
 class TestCity_instantiation(unittest.TestCase):
-    """Unittests for testing instantiation of the City class."""
+    """Unittests for testing instantiation
+      of the City class."""
 
     def test_no_args_instantiates(self):
-        """Test that City can be instantiated with no arguments."""
+        """Test that City can be instantiated
+          with no arguments."""
         self.assertEqual(City, type(City()))
 
     def test_new_instance_stored_in_objects(self):
@@ -44,14 +44,16 @@ class TestCity_instantiation(unittest.TestCase):
         self.assertEqual(datetime, type(City().updated_at))
 
     def test_state_id_is_public_class_attribute(self):
-        """Test that state_id is a public class attribute of City."""
+        """Test that state_id is a public class
+          attribute of City."""
         cy = City()
         self.assertEqual(str, type(City.state_id))
         self.assertIn("state_id", dir(cy))
         self.assertNotIn("state_id", cy.__dict__)
 
     def test_name_is_public_class_attribute(self):
-        """Test that name is a public class attribute of City."""
+        """Test that name is a public class
+          attribute of City."""
         cy = City()
         self.assertEqual(str, type(City.name))
         self.assertIn("name", dir(cy))
@@ -94,12 +96,14 @@ class TestCity_instantiation(unittest.TestCase):
         self.assertIn("'updated_at': " + dt_repr, cystr)
 
     def test_args_unused(self):
-        """Test that City doesn't use any arguments passed to it."""
+        """Test that City doesn't use any
+          arguments passed to it."""
         cy = City(None)
         self.assertNotIn(None, cy.__dict__.values())
 
     def test_instantiation_with_kwargs(self):
-        """Test that City can be instantiated with keyword arguments."""
+        """Test that City can be instantiated
+          with keyword arguments."""
         dt = datetime.today()
         dt_iso = dt.isoformat()
         cy = City(id="345", created_at=dt_iso, updated_at=dt_iso)
@@ -122,7 +126,8 @@ class TestCity_save(unittest.TestCase):
     @classmethod
     def setUp(cls):
         """
-        Set up the test case by renaming the file.json to tmp (if it exists).
+        Set up the test case by renaming the
+          file.json to tmp (if it exists).
         """
         try:
             os.rename("file.json", "tmp")
@@ -145,7 +150,8 @@ class TestCity_save(unittest.TestCase):
 
     def test_ones_save(self):
         """
-        Test that the save method updates the updated_at attribute of City.
+        Test that the save method updates the
+          updated_at attribute of City.
         """
         cy = City()
         sleep(0.05)
@@ -155,8 +161,7 @@ class TestCity_save(unittest.TestCase):
 
     def test_two_saves(self):
         """
-        Test that the save method updates the updated_at
-          attribute of City when called multiple times.
+        Test that the save method updates \
         """
         cy = City()
         sleep(0.05)
@@ -191,12 +196,14 @@ class TestCity_save(unittest.TestCase):
 
 class TestCity_to_dict(unittest.TestCase):
     """
-    Unit tests for the to_dict method of the City class.
+    Unit tests for the to_dict method of
+      the City class.
     """
 
     def test_to_dict_type(self):
         """
-        Test that the to_dict method returns a dictionary.
+        Test that the to_dict method returns
+          a dictionary.
         """
         self.assertTrue(dict, type(City().to_dict()))
 
@@ -252,7 +259,8 @@ class TestCity_to_dict(unittest.TestCase):
     def test_contrast_to_dict_dunder_dict(self):
         """
         Test that the to_dict method returns
-          a dictionary different from the object's __dict__.
+          a dictionary different from the
+            object's __dict__.
         """
         cy = City()
         self.assertNotEqual(cy.to_dict(), cy.__dict__)

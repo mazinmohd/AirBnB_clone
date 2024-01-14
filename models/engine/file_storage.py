@@ -2,8 +2,6 @@
 """
 FileStorage - Serialization and Deserialization of Objects
 """
-
-
 import json
 import os.path
 
